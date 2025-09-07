@@ -94,6 +94,10 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
+
+        // Pick the 'play' variant for dependencies that declare a 'store' productDimension (react-native-iap)
+        // Change 'play' to 'amazon' if you want the Amazon flavor instead.
+        missingDimensionStrategy 'store', 'play'
     }
     signingConfigs {
         debug {
@@ -131,6 +135,7 @@ android {
 // Accepts values in comma delimited lists, example:
 // android.packagingOptions.pickFirsts=/LICENSE,**/picasa.ini
 ["pickFirsts", "excludes", "merges", "doNotStrip"].each { prop ->
+
     // Split option: 'foo,bar' -> ['foo', 'bar']
     def options = (findProperty("android.packagingOptions.$prop") ?: "").split(",");
     // Trim all elements in place.
