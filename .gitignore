@@ -1,7 +1,6 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
 # dependencies
-node_modules/
 
 # Expo
 .expo/
@@ -26,6 +25,8 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 
+
+node_modules
 # macOS
 .DS_Store
 *.pem

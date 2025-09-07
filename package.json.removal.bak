@@ -17,6 +17,7 @@
     "axios": "^1.11.0",
     "expo": "^53.0.0",
     "expo-auth-session": "^6.2.1",
+    "expo-dev-client": "~5.2.4",
     "expo-status-bar": "2.2.3",
     "expo-web-browser": "~14.2.0",
     "i18n-iso-countries": "^7.14.0",
@@ -25,7 +26,6 @@
     "react-dom": "^18.2.0",
     "react-native": "^0.76.6",
     "react-native-gesture-handler": "~2.24.0",
-    "react-native-iap": "^12.11.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "~4.11.1",
@@ -36,6 +36,17 @@
     "@types/react": "^18.3.24",
     "@types/react-native": "0.72.7",
     "typescript": "~5.8.3"
+  },
+  "overrides": {
+    "glob": "7.2.3",
+    "path-scurry": "1.0.1",
+    "metro": "0.82.0",
+    "metro-resolver": "0.82.0",
+    "metro-runtime": "0.82.0",
+    "metro-config": "0.82.0",
+    "strip-ansi": "6.0.1",
+    "lru-cache": "6.0.0",
+    "npm-package-arg": "8.1.0"
   },
   "private": true
 }

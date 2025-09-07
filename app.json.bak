@@ -37,7 +37,7 @@
       "checkAutomatically": "ON_LOAD",
       "fallbackToCacheTimeout": 0
     },
-    "plugins": ["./plugins/withNoopPlugin", "./plugins/withExpoPodSources"],
+    "plugins": ["./plugins/withNoopPlugin"],
     "extra": {
       "eas": {
         "projectId": "1110e0ff-902f-45f0-b542-271948b1b012"

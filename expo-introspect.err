@@ -1,0 +1,38 @@
+2025-09-06T19:04:53.791Z expo:telemetry Recording 1 event(s)
+2025-09-06T19:04:53.799Z expo:env C:\Users\LENOVO\Desktop\Vsim app\MyApp\.env does not exist, skipping this env file
+2025-09-06T19:04:53.799Z expo:env C:\Users\LENOVO\Desktop\Vsim app\MyApp\.env.development does not exist, skipping this env file
+2025-09-06T19:04:53.800Z expo:env C:\Users\LENOVO\Desktop\Vsim app\MyApp\.env.local does not exist, skipping this env file
+2025-09-06T19:04:53.800Z expo:env C:\Users\LENOVO\Desktop\Vsim app\MyApp\.env.development.local does not exist, skipping this env file
+2025-09-06T19:04:54.614Z expo:config-plugins:ios:maps Google Maps API Key: null
+2025-09-06T19:04:54.631Z expo:prebuild-config:expo-splash-screen:ios config: undefined
+2025-09-06T19:04:54.637Z expo:prebuild-config Skipping unlinked auto plugin: expo-firebase-analytics
+2025-09-06T19:04:54.637Z expo:prebuild-config Skipping unlinked auto plugin: expo-firebase-core
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-google-sign-in
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-app-auth
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-av
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-background-fetch
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-brightness
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-calendar
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-camera
+2025-09-06T19:04:54.638Z expo:prebuild-config Skipping unlinked auto plugin: expo-cellular
+2025-09-06T19:04:54.748Z expo:prebuild-config Skipping unlinked auto plugin: expo-image-picker
+2025-09-06T19:04:54.760Z expo:prebuild-config Skipping unlinked auto plugin: expo-location
+2025-09-06T19:04:54.761Z expo:prebuild-config Skipping unlinked auto plugin: expo-media-library
+2025-09-06T19:04:54.761Z expo:prebuild-config Skipping unlinked auto plugin: expo-screen-orientation
+2025-09-06T19:04:54.761Z expo:prebuild-config Skipping unlinked auto plugin: expo-sensors
+2025-09-06T19:04:54.761Z expo:prebuild-config Skipping unlinked auto plugin: expo-task-manager
+2025-09-06T19:04:54.762Z expo:prebuild-config Skipping unlinked auto plugin: expo-local-authentication
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.dangerous
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.settingsGradle
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.projectBuildGradle
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.appBuildGradle
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.finalized
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.mainActivity
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: android.mainApplication
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: ios.podfile
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: ios.appDelegate
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: ios.dangerous
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: ios.xcodeproj
+2025-09-06T19:04:54.804Z expo:config-plugins:mod-compiler removing non-idempotent mod: ios.finalized
+2025-09-06T19:04:54.805Z expo:config-plugins:mod-compiler run in order: manifest, colors, strings, gradleProperties, styles, colorsNight
+2025-09-06T19:04:54.805Z expo:config-plugins:base-mods mods.android.manifest: file path: C:\Users\LENOVO\Desktop\Vsim app\MyApp\android\app\src\main\AndroidManifest.xml
