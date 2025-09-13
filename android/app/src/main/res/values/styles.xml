@@ -1,10 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+  <!-- Minimal fallback definition for Theme.EdgeToEdge -->
+  <style name="Theme.EdgeToEdge" parent="Theme.AppCompat.DayNight.NoActionBar">
+      <item name="android:statusBarColor">@android:color/transparent</item>
+      <item name="android:navigationBarColor">@android:color/black</item>
+      <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+  </style>
+
+  <!-- Your existing theme, now it can safely inherit Theme.EdgeToEdge -->
   <style name="AppTheme" parent="Theme.EdgeToEdge">
     <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="android:statusBarColor">#ffffff</item>
   </style>
+
   <style name="Theme.App.SplashScreen" parent="AppTheme">
     <item name="android:windowBackground">@drawable/ic_launcher_background</item>
   </style>
+
 </resources>

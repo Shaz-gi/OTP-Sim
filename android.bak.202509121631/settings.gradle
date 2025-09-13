@@ -1,0 +1,53 @@
+// android/settings.gradle (consolidated)
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://maven.expo.dev' }
+    }
+
+    resolutionStrategy {
+        eachPlugin { details ->
+            if (details.requested.id.id.startsWith("org.jetbrains.kotlin")) {
+                details.useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+            }
+        }
+    }
+}
+
+def rnPluginA = file('../node_modules/@react-native/gradle-plugin')
+def rnPluginB = file('../node_modules/react-native-gradle-plugin')
+if (rnPluginA.exists()) {
+    includeBuild('../node_modules/@react-native/gradle-plugin')
+} else if (rnPluginB.exists()) {
+    includeBuild('../node_modules/react-native-gradle-plugin')
+}
+
+def expoAutolinkingPlugin = file('../node_modules/expo-modules-autolinking/android/expo-gradle-plugin')
+def expoCorePlugin = file('../node_modules/expo-modules-core/expo-module-gradle-plugin')
+if (expoAutolinkingPlugin.exists()) {
+    includeBuild('../node_modules/expo-modules-autolinking/android/expo-gradle-plugin')
+} else if (expoCorePlugin.exists()) {
+    includeBuild('../node_modules/expo-modules-core/expo-module-gradle-plugin')
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://www.jitpack.io") }
+        if (file('../node_modules/react-native/android').exists()) {
+            maven { url = uri('../node_modules/react-native/android') }
+        }
+        if (file('../node_modules/@react-native/gradle-plugin/maven').exists()) {
+            maven { url = uri('../node_modules/@react-native/gradle-plugin/maven') }
+        }
+        maven { url 'https://maven.expo.dev' }
+    }
+}
+
+include ':app'
+project(':app').projectDir = file('app')

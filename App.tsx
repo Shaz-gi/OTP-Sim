@@ -134,6 +134,7 @@
 // });
 // App.tsx
 // App.tsx
+import PrivacyPolicy from "./screens/privacy-policy"; // 👈 make sure file name matches (case-sensitive)
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -152,7 +153,7 @@ import FinishOrderScreen from "./screens/FinishOrderScreen";
 import CancelOrderScreen from "./screens/CancelOrderScreen";
 import SmsInboxScreen from "./screens/SmsInboxScreen";
 
-// Typed route params
+// ✅ Typed route params
 export type RootStackParamList = {
   Auth: undefined;
   Services: undefined;
@@ -163,6 +164,7 @@ export type RootStackParamList = {
   FinishOrder: undefined;
   CancelOrder: undefined;
   Inbox: undefined;
+  PrivacyPolicy: undefined; // 👈 Added this
 };
 
 // Create the stack navigator
@@ -229,6 +231,11 @@ export default function App() {
           <Stack.Screen name="FinishOrder" component={FinishOrderScreen} />
           <Stack.Screen name="CancelOrder" component={CancelOrderScreen} />
           <Stack.Screen name="Inbox" component={SmsInboxScreen} />
+          <Stack.Screen
+            name="PrivacyPolicy"
+            component={PrivacyPolicy}
+            options={{ title: "Privacy Policy" }}
+          />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator screenOptions={{ headerShown: false }}>

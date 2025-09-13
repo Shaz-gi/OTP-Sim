@@ -2,49 +2,35 @@
   "expo": {
     "name": "MyApp",
     "slug": "MyApp",
-    "scheme": "com.otpsim.myapp",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.otpsim.myapp",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "android": {
-      "package": "com.otpsim.myapp",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "sdkVersion": "53.0.0",
-    "platforms": ["ios", "android", "web"],
-    "assetBundlePatterns": ["**/*"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "updates": {
       "enabled": true,
       "checkAutomatically": "ON_LOAD",
       "fallbackToCacheTimeout": 0
     },
-    "plugins": ["./plugins/withNoopPlugin", "./plugins/withExpoPodSources"],
+    "plugins": [
+      "./plugins/withNoopPlugin",
+      "./plugins/withExpoPodSources",
+      "expo-asset",
+      "expo-web-browser",
+      "expo-font"
+    ],
     "extra": {
       "eas": {
         "projectId": "1110e0ff-902f-45f0-b542-271948b1b012"
       }
     },
-    "cli": {
-      "appVersionSource": "app.json"
+    "android": {
+      "package": "com.shaz_salim0.MyApp"
     }
   }
 }

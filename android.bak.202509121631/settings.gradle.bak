@@ -1,0 +1,179 @@
+pluginManagement {
+  def reactNativeGradlePlugin = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
+    }.standardOutput.asText.get().trim()
+  ).getParentFile().absolutePath
+  includeBuild(reactNativeGradlePlugin)
+
+  def expoPluginsPath = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+    }.standardOutput.asText.get().trim(),
+    "../android/expo-gradle-plugin"
+  ).absolutePath
+  includeBuild(expoPluginsPath)
+
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+    maven { url 'https://maven.expo.dev' }
+  }
+}
+
+plugins {
+  id("com.facebook.react.settings")
+  id("expo-autolinking-settings")
+}
+pluginManagement {
+  // Include React Native's Gradle plugin (local included build)
+  def reactNativeGradlePlugin = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
+    }.standardOutput.asText.get().trim()
+  ).getParentFile().absolutePath
+  includeBuild(reactNativeGradlePlugin)
+
+  // Include the Expo gradle plugin shipped with expo-modules-autolinking
+  def expoPluginsPath = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+    }.standardOutput.asText.get().trim(),
+    "../android/expo-gradle-plugin"
+  ).absolutePath
+  includeBuild(expoPluginsPath)
+
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+    // fallback: Expo's Maven (some setups need this)
+    maven { url 'https://maven.expo.dev' }
+  }
+}
+
+plugins {
+  id("com.facebook.react.settings")
+  id("expo-autolinking-settings")
+}
+pluginManagement {
+  // Include React Native's Gradle plugin (local included build)
+  def reactNativeGradlePlugin = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
+    }.standardOutput.asText.get().trim()
+  ).getParentFile().absolutePath
+  includeBuild(reactNativeGradlePlugin)
+
+  // Include the Expo gradle plugin shipped with expo-modules-autolinking
+  def expoPluginsPath = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+    }.standardOutput.asText.get().trim(),
+    "../android/expo-gradle-plugin"
+  ).absolutePath
+  includeBuild(expoPluginsPath)
+
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+    // fallback: Expo's Maven (some setups need this)
+    maven { url 'https://maven.expo.dev' }
+  }
+}
+
+plugins {
+  id("com.facebook.react.settings")
+  id("expo-autolinking-settings")
+}
+// Top of file: pluginManagement ensures Gradle resolves plugins consistently.
+// include local gradle plugin projects from node_modules so com.facebook.react:react-native-gradle-plugin resolves to local project
+// android/settings.gradle
+
+plugins {
+    id("com.android.application") version "8.6.0" apply false
+    id("com.android.library") version "8.6.0" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.22" apply false
+
+id("expo-autolinking-settings")
+}
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+
+        // Local plugin maven repos (if plugin packages publish maven metadata inside node_modules)
+        maven { url = uri('../node_modules/@react-native/gradle-plugin/maven') }
+        maven { url = uri('../node_modules/react-native-gradle-plugin/maven') }
+    }
+
+    resolutionStrategy {
+        eachPlugin { details ->
+            // Force Kotlin Gradle plugin version for consistency
+            if (details.requested.id.id.startsWith("org.jetbrains.kotlin")) {
+                details.useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+            }
+        }
+    }
+
+  def expoPluginsPath = new File(
+    providers.exec {
+      workingDir(rootDir)
+      commandLine("node", "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+    }.standardOutput.asText.get().trim(),
+    "../android/expo-gradle-plugin"
+  ).absolutePath
+  includeBuild(expoPluginsPath)
+}
+
+// Centralised dependency resolution: prefer settings repositories over project-level ones
+dependencyResolutionManagement {
+    // Prefer settings repositories — everything should be declared here
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://www.jitpack.io") }
+
+        // Local maven repos — these point into node_modules so Gradle can resolve RN artifacts
+        // (react-native android local artifact)
+        maven { url = uri('../node_modules/react-native/android') }
+
+        // plugin packages (one of these may exist depending on your RN version)
+        maven { url = uri('../node_modules/@react-native/gradle-plugin/maven') }
+        maven { url = uri('../node_modules/react-native-gradle-plugin/maven') }
+    }
+}
+
+// Conditionally include local gradle-plugin builds from node_modules.
+// This is robust: it only includes them if they actually exist on disk.
+def rnGradlePluginDirA = file('../node_modules/@react-native/gradle-plugin')
+def rnGradlePluginDirB = file('../node_modules/react-native-gradle-plugin')
+def expoGradlePluginDir = file('../node_modules/expo-gradle-plugin')
+
+if (rnGradlePluginDirA.exists()) {
+    includeBuild('../node_modules/@react-native/gradle-plugin')
+} else if (rnGradlePluginDirB.exists()) {
+    includeBuild('../node_modules/react-native-gradle-plugin')
+}
+
+// Optional: include expo gradle plugin if present (uncomment / keep conditional)
+if (expoGradlePluginDir.exists()) {
+    includeBuild('../node_modules/expo-gradle-plugin')
+}
+
+expoAutolinking.useExpoModules()
+expoAutolinking.useExpoVersionCatalog()
+includeBuild(expoAutolinking.reactNativeGradlePlugin)

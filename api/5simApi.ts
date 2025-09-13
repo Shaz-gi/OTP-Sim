@@ -1,16 +1,18 @@
+// server-side 5sim client (server/api/5sim.ts)
 import axios from "axios";
 
-// Replace with your actual API key from 5sim
-const API_KEY = "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODg1NDY0MDMsImlhdCI6MTc1NzAxMDQwMywicmF5IjoiNTNjNDk2ZjM4ZTg3MDRkMzE4YzE5ZGNhNjk5YWM3ZGEiLCJzdWIiOjM0NzYxNDJ9.0CnL9-Bf6HOLOY6oOeD-t7vFa-_p9NKahqmLJlA8eGxJS-2f0mE2VDPiE16-h0uVcHAH6pJudrvl5LcJVHfx9WeF2P6RXMEoESi9A6fEJXgiV7jl-pSmrZau4E7LDEWngNUPslqRtXxSMilUtWaxCLtuErEgYVbZEhgBaLBYBBLjT4OcXmKAckB-l_rtZh26UHKArd9TyP6sXRDg4V_PEj0kZ4EVuwtTt95Be05XmQFw8R0caTqE2kMSkWZpeVaXPEspAB4gp4OrnElUOxZBFeYluI8Pl6HMiwjIvlNyJ98cB6YDKrjvaso0oAt2XIyV0Lr-cuYudNIPMfQVnVHdxg";
+const FIVE_SIM_API_KEY = process.env.FIVE_SIM_API_KEY!;
+if (!FIVE_SIM_API_KEY) throw new Error("Missing FIVE_SIM_API_KEY env var");
 
-const API = axios.create({
+export const API = axios.create({
   baseURL: "https://5sim.net/v1",
   headers: {
-    Authorization: `Bearer ${API_KEY}`,
+    Authorization: `Bearer ${FIVE_SIM_API_KEY}`,
     Accept: "application/json",
-    "Content-Type": "application/json",
   },
+  timeout: 20000,
 });
+
 
 export const getBalance = async () => {
   try {
